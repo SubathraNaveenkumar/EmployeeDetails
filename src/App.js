@@ -39,7 +39,7 @@ const App = () => {
 	}
 
 	useEffect(() => {
-		axios.get("http://dummy.restapiexample.com/api/v1/employees")
+		axios.get('http://dummy.restapiexample.com/api/v1/employees')
 			.then(response => {
 				setEmp(response.data.data)
 			})
@@ -49,10 +49,10 @@ const App = () => {
 	}, [])
 
 	return (
-		<div className="container app_background">
-			<h2 className="title">Employee Details</h2>
-			<div className="flex-row">
-				<div className="flex-large">
+		<div className='container app_background'>
+			<h2 className='title'>Employee Details</h2>
+			<div className='flex-row'>
+				<div className='flex-large'>
 					{editing ? ( // true
 						<Fragment>
 							<h3>Employees Details</h3>
@@ -70,7 +70,7 @@ const App = () => {
 							</Fragment>
 						)}
 				</div>
-				<div className="flex-large">
+				<div className='flex-large'>
 					<h3>Employee Data</h3>
 					<EmpTable employes={employes} editRow={editRow} deleteEmploy={deleteEmploy} />
 				</div>
