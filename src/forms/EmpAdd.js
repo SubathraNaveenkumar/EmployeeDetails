@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 const EmpAdd = props => {
 
@@ -12,13 +13,17 @@ const EmpAdd = props => {
 
 	const handleInputChange = event => {
 		const { name, value } = event.target
-
 		setUser({ ...user, [name]: value }) // curr obj value get array
+	}
+
+	const postData = {
+		name:user.employee_name,
+		salary: user.employee_salary,
+		age: user.employee_age
 	}
 
 	return (
 		<form
-
 			onSubmit={event => {
 				event.preventDefault()
 				let constnamerr = "";
@@ -43,13 +48,25 @@ const EmpAdd = props => {
 					constagerr = "Age should be number...";
 				}
 				setValidation({ ...validation, nameErr: constnamerr, salErr: constsalrr, ageErr: constagerr });
-				//console.log(validation);
+
+					axios.post("http://dummy.restapiexample.com/api/v1/create", {postData})
+					.then(response => {
+						console.log(response.data)
+						console.log(postData)
+					})
+					.catch(error => {
+						console.log(error)
+					})
+
+					//console.log(validation);
 				if (constnamerr == '' && constsalrr == '' && constagerr == '') {
 					props.addEmply(user)
+					
 					setUser(initialEmployState)
 				}
 			}}
 		>
+		
 			<label>Employee Id</label>
 			<input type="text" name="id" value={user.id} onChange={handleInputChange} />
 
