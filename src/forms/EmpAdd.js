@@ -38,7 +38,7 @@ const EmpAdd = props => {
 				if (!user.employee_name) {
 					constnamerr = 'Name should not be empty...';
 				}
-				else if (!user.employee_name.match(/^[a-zA-Z]+$/)) {
+				else if (!user.employee_name.match(/^[a-zA-Z\s]+$/)) {
 					constnamerr = 'Name should be characters...';
 				}
 				if (!user.employee_salary) {
